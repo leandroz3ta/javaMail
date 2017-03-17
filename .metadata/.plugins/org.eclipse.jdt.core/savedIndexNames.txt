@@ -1,0 +1,25 @@
+INDEX VERSION 1.127+D:\Repositorio_Source_Tree\JavaMail\.metadata\.plugins\org.eclipse.jdt.core
+3778645487.index
+2694812966.index
+3320091142.index
+1334412443.index
+1075874757.index
+2827973200.index
+293692079.index
+71018339.index
+1749955439.index
+2137645919.index
+3922087686.index
+318857592.index
+495217312.index
+203535350.index
+1079038258.index
+1274870753.index
+3068640910.index
+3593375140.index
+4013218907.index
+3423988565.index
+3064462347.index
+692810719.index
+1494953510.index
+3260877587.index

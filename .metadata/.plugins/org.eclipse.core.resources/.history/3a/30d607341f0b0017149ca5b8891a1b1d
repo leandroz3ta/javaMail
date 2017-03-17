@@ -1,0 +1,99 @@
+package br.com.z3tasistemas.modelo;
+
+import java.util.Properties;
+
+import javax.activation.DataHandler;
+import javax.mail.Address;
+import javax.mail.BodyPart;
+import javax.mail.Folder;
+import javax.mail.Message;
+import javax.mail.Multipart;
+import javax.mail.Session;
+import javax.mail.Store;
+import javax.mail.internet.MimeBodyPart;
+import javax.mail.internet.MimeMultipart;
+
+public class JavaReadMail {
+
+    public static void main(String[] args) {
+    	
+    	//Configuração básica da conta
+    	String servidor = "imap.tropicalpneus.com.br";
+    	String email = "suporte@tropicalpneus.com.br";
+    	String senha = "nova@202220";
+    	
+    	
+        Properties props = new Properties();
+        //Conectamos na conta via IMAP
+        props.setProperty("mail.store.protocol", "imaps");
+        try {
+        	//Aqui inciaremos a conexão com o servidor de emails
+            Session session = Session.getInstance(props, null);
+            Store store = session.getStore();
+            store.connect(servidor, email, senha);
+            
+            //Vamos agora abrir a caixa de entrada
+            Folder inbox = store.getFolder("INBOX");
+            
+            //Ela será aberta em modo somente leitura
+            inbox.open(Folder.READ_ONLY);
+            
+            //Uma vez dentro da caixa de entrada, pegaremos todas as mensagens
+            Message msg = inbox.getMessage(inbox.getMessageCount());
+            
+            Address[] in = msg.getFrom();
+            
+            for (Address address : in) {
+            	//Exibindo remetente da mensagem
+                System.out.println("FROM:" + address.toString());
+            }
+            
+            
+            //Daqui em diante é onde a dor de cabeça começa...
+            
+            /*O método multipart é responsável por pegar o conteúdo da variável
+             * msg e analisar sua estrutura*/
+            Multipart mp = (Multipart) msg.getContent();
+            
+            /*
+             * O método bodypart pega o corpo da mensagem que está na variável mp*/
+            BodyPart bp = mp.getBodyPart(0);
+            
+            /*
+             * O método MimeMultipart pega o conteúdo da varíavel msg
+             * e analisa se ela contém algum tipo de arquivo
+             * */
+            MimeMultipart mmp = (MimeMultipart) msg.getContent();
+            MimeBodyPart mbp = (MimeBodyPart) mmp.getBodyPart(0);
+            
+
+            Multipart multipart = (Multipart) msg.getContent();
+
+            for (int j = 0; j < multipart.getCount(); j++) {
+
+                BodyPart bodyPart = multipart.getBodyPart(j);
+
+                String disposition = bodyPart.getDisposition();
+
+                  if (disposition != null && (disposition.equalsIgnoreCase("ATTACHMENT"))) { // BodyPart.ATTACHMENT doesn't work for gmail
+                      System.out.println("Email possui anexo");
+
+                      DataHandler handler = bodyPart.getDataHandler();
+                      System.out.println("Nome do arquivo : " + handler.getName());                                 
+                    }
+                  else { 
+                      System.out.println("Body: "+bodyPart.getContent());
+                      String content= bodyPart.getContent().toString();
+                      System.out.println("Conteudo mensagem: "+content);
+                    }
+            }
+            System.out.println("SENT DATE:" + msg.getSentDate());
+            System.out.println("SUBJECT:" + msg.getSubject());
+            System.out.println("CONTENT:" + bp.getInputStream().toString());     	
+            System.out.println("Conteudo: "+mbp.getContent().toString());
+
+        } catch (Exception mex) {
+            mex.printStackTrace();
+        }
+    }
+}
