@@ -18,9 +18,9 @@ public class JavaReadMail {
     public static void main(String[] args) {
     	
     	//Configuração básica da conta
-    	String servidor = "imap.tropicalpneus.com.br";
-    	String email = "suporte@tropicalpneus.com.br";
-    	String senha = "nova@202220";
+    	String servidor = "Nome do host";
+    	String email = "endereço de email";
+    	String senha = "senha";
     	
     	
         Properties props = new Properties();
