@@ -2,11 +2,11 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
-	<classpathentry kind="lib" path="C:/Users/ti02/Downloads/javamail1_4_7/javamail-1.4.7/lib/dsn.jar"/>
-	<classpathentry kind="lib" path="C:/Users/ti02/Downloads/javamail1_4_7/javamail-1.4.7/lib/gimap.jar"/>
-	<classpathentry kind="lib" path="C:/Users/ti02/Downloads/javamail1_4_7/javamail-1.4.7/lib/imap.jar"/>
-	<classpathentry kind="lib" path="C:/Users/ti02/Downloads/javamail1_4_7/javamail-1.4.7/lib/mailapi.jar"/>
-	<classpathentry kind="lib" path="C:/Users/ti02/Downloads/javamail1_4_7/javamail-1.4.7/lib/pop3.jar"/>
-	<classpathentry kind="lib" path="C:/Users/ti02/Downloads/javamail1_4_7/javamail-1.4.7/lib/smtp.jar"/>
+	<classpathentry kind="lib" path="Libs/dsn.jar"/>
+	<classpathentry kind="lib" path="Libs/gimap.jar"/>
+	<classpathentry kind="lib" path="Libs/imap.jar"/>
+	<classpathentry kind="lib" path="Libs/mailapi.jar"/>
+	<classpathentry kind="lib" path="Libs/pop3.jar"/>
+	<classpathentry kind="lib" path="Libs/smtp.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
